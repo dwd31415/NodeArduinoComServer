@@ -1,1 +1,1 @@
-tsc ts/server-main.ts -o js/server_main.js
+tsc ts/server-main.ts --out js/server_main.js

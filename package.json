@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/dwd31415/NodeArduinoComServer",
   "dependencies": {
+    "serialport": "^1.6.3",
     "typescript": "^1.5.0-beta"
   }
 }
