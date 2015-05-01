@@ -1,0 +1,27 @@
+{
+  "name": "NodeArduinoComServer",
+  "version": "0.0.1",
+  "description": "A Node.js server, that communicates with an Arduino.",
+  "main": "js/server_main.js",
+  "scripts": {
+    "test": "node js/tests.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dwd31415/NodeArduinoComServer.git"
+  },
+  "keywords": [
+    "arduino",
+    "server",
+    "serial"
+  ],
+  "author": "Adrian Dawid",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dwd31415/NodeArduinoComServer/issues"
+  },
+  "homepage": "https://github.com/dwd31415/NodeArduinoComServer",
+  "dependencies": {
+    "typescript": "^1.5.0-beta"
+  }
+}
