@@ -12,7 +12,8 @@
  var socketio = require('socket.io');
 
 /**
-  * A server, that sends all messages it recives over a serial port, to a callback function.
+  *  This server call a callback function whenever a serial message comes in. 
+  *  The content of the message is given to the callback as parameter number one.
  **/
 class ComInServer
 {
