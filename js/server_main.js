@@ -9,7 +9,8 @@ var serialport = require("serialport");
 var http = require("http");
 var socketio = require('socket.io');
 /**
-  * A server, that sends all messages it recives over a serial port, to a callback function.
+  *  This server call a callback function whenever a serial message comes in.
+  *  The content of the message is given to the callback as parameter number one.
  **/
 var ComInServer = (function () {
     function ComInServer() {
@@ -29,15 +30,16 @@ var ComInServer = (function () {
 ;
 function main(params) {
     var currentPort = undefined;
+    console.log("Available ports:");
     serialport.list(function (err, ports) {
         ports.forEach(function (port) {
-            console.log(port);
             ports += port.comName + "\n";
             console.log(port.comName);
             if (port.comName === params[2]) {
                 currentPort = port;
             }
         });
+        console.log("Port " + currentPort.comName + " selected");
         var activeSerialPort = new serialport.SerialPort(currentPort.comName, {
             baudrate: 9600
         });
@@ -45,7 +47,7 @@ function main(params) {
             var comInServer = new ComInServer();
             comInServer.setSerialPort(activeSerialPort);
             comInServer.setCallback(function (data) {
-                console.log("" + data);
+                console.log(data.toString());
             });
         });
     });

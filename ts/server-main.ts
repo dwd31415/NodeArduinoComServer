@@ -41,10 +41,10 @@ class ComInServer
  
  
  function main(params:string[]) {
-	let currentPort : any = undefined;
+	var currentPort : any = undefined;
+	console.log("Available ports:")
  	serialport.list(function (err, ports) {
     	ports.forEach(function(port) {
-			console.log(port);
         	ports += port.comName + "\n";
         	console.log(port.comName);
      		if(port.comName === params[2])
@@ -52,6 +52,7 @@ class ComInServer
         		currentPort = port;
       		}
    	 });
+	console.log("Port " + currentPort.comName + " selected");
     var activeSerialPort = new serialport.SerialPort(currentPort.comName, {
         baudrate: 9600
     });
@@ -59,7 +60,7 @@ class ComInServer
       var comInServer = new ComInServer();
 	  comInServer.setSerialPort(activeSerialPort);
 	  comInServer.setCallback(function (data) {
-		  console.log();
+		  console.log(data.toString());
 	  });
     });
   });
