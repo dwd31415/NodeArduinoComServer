@@ -49,15 +49,13 @@ function main(params) {
             comInServer.setSerialPort(activeSerialPort);
             comInServer.setCallback(function (data) {
                 console.log(data.toString());
-<<<<<<< HEAD
                 currentLog += data.toString();
-=======
->>>>>>> 57a70ddff2b0553cdc5746155b8e6dfec5af03fa
             });
         });
     });
 }
 main(process.argv);
+
 var http = require('http');
 http.createServer(function (req, res) {
     res.writeHead(200, { 'Content-Type': 'text/plain' });
