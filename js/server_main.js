@@ -49,7 +49,10 @@ function main(params) {
             comInServer.setSerialPort(activeSerialPort);
             comInServer.setCallback(function (data) {
                 console.log(data.toString());
+<<<<<<< HEAD
                 currentLog += data.toString();
+=======
+>>>>>>> 57a70ddff2b0553cdc5746155b8e6dfec5af03fa
             });
         });
     });

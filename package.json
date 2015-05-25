@@ -4,7 +4,8 @@
   "description": "A Node.js server, that communicates with an Arduino.",
   "main": "js/server_main.js",
   "scripts": {
-    "test": "node js/tests.js"
+    "test": "node js/server_main.js",
+    "start": "node js/server_main.js"
   },
   "repository": {
     "type": "git",
