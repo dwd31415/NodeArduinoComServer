@@ -63,10 +63,7 @@ var currentLog = "";
 	  comInServer.setSerialPort(activeSerialPort);
 	  comInServer.setCallback(function (data) {
 		  console.log(data.toString());
-<<<<<<< HEAD
 		  currentLog += data.toString();
-=======
->>>>>>> 57a70ddff2b0553cdc5746155b8e6dfec5af03fa
 	  });
     });
   });
@@ -75,11 +72,8 @@ var currentLog = "";
  
  main(process.argv);
  
-<<<<<<< HEAD
  var http = require('http');
  http.createServer(function (req, res) {
      res.writeHead(200, {'Content-Type': 'text/plain'});
  	 res.end(currentLog);
  }).listen(1337);
-=======
->>>>>>> 57a70ddff2b0553cdc5746155b8e6dfec5af03fa
