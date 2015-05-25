@@ -12,7 +12,8 @@
  var socketio = require('socket.io');
 
 /**
-  * A server, that sends all messages it recives over a serial port, to a callback function.
+  *  This server call a callback function whenever a serial message comes in. 
+  *  The content of the message is given to the callback as parameter number one.
  **/
 class ComInServer
 {
@@ -37,13 +38,15 @@ class ComInServer
 		});
 	}
 };
+
+var currentLog = "";
  
  
  function main(params:string[]) {
-	let currentPort : any = undefined;
+	var currentPort : any = undefined;
+	console.log("Available ports:")
  	serialport.list(function (err, ports) {
     	ports.forEach(function(port) {
-			console.log(port);
         	ports += port.comName + "\n";
         	console.log(port.comName);
      		if(port.comName === params[2])
@@ -51,6 +54,7 @@ class ComInServer
         		currentPort = port;
       		}
    	 });
+	console.log("Port " + currentPort.comName + " selected");
     var activeSerialPort = new serialport.SerialPort(currentPort.comName, {
         baudrate: 9600
     });
@@ -58,11 +62,18 @@ class ComInServer
       var comInServer = new ComInServer();
 	  comInServer.setSerialPort(activeSerialPort);
 	  comInServer.setCallback(function (data) {
-		  console.log();
+		  console.log(data.toString());
+		  currentLog += data.toString();
 	  });
     });
   });
+ 
 }
  
  main(process.argv);
  
+ var http = require('http');
+ http.createServer(function (req, res) {
+     res.writeHead(200, {'Content-Type': 'text/plain'});
+ 	 res.end(currentLog);
+ }).listen(1337);
