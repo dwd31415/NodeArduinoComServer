@@ -3,7 +3,6 @@ const byte ledPin = 13;
 const String serialMessage = "DOOR_STATE_CHANGE";
 
 byte lastDoorState = HIGH;
-bool ledIsOn = false;
 
 void setup() {
   pinMode(inputPin,INPUT_PULLUP);
@@ -12,19 +11,10 @@ void setup() {
 }
 
 void loop() {
+  digitalWrite(ledPin,digitalRead(inputPin));
   if(digitalRead(inputPin) != lastDoorState)
   {
     Serial.println(serialMessage);
-    if(ledIsOn)
-    {
-      digitalWrite(ledPin,LOW);
-      ledIsOn = false;
-    }
-    if(!ledIsOn)
-    {
-      digitalWrite(ledPin,HIGH);
-      ledIsOn = true;
-    }
   }
   lastDoorState = digitalRead(inputPin);
 }
